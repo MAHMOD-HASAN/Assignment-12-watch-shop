@@ -1,0 +1,39 @@
+.caroucel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.caroucel img {
+    width: 100%;
+}
+
+.caroucel div {
+    margin-left: 100px;
+    width: 50%;
+}
+
+.caroucel h1 {
+    text-transform: uppercase;
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.788);
+}
+.caroucel p {
+    color: wheat;
+}
+
+/*
+responsive at mobile device
+*/
+
+@media only screen and (max-width: 688px) {
+  .caroucel {
+      flex-direction: column;
+  }
+  .caroucel div {
+      margin: 0;
+  }
+  .caroucel h1, p {
+      width: 100%;
+  }
+}
