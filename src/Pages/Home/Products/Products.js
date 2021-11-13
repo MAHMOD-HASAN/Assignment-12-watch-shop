@@ -13,6 +13,8 @@ const Products = () => {
         })
     }, [])
 
+    
+
     return (
         <Container className='my-5'>
             <h2 className='text-primary text-center'>Our Products</h2>
@@ -21,9 +23,8 @@ const Products = () => {
                 {
                     products.map(product => <div key={product._id}>
 
-                       <Col className='text-center py-3'
+                       <Col className='text-center p-3 bg-dark'
                        style={{
-                           backgroundColor : 'rgba(0, 0, 37, 0.89)',
                            borderRadius : '10px',
                            color : 'rgb(185, 145, 145)',
                          }}
@@ -57,8 +58,8 @@ const Products = () => {
                 
             </Row>
             <Link to='/explore' style={{textDecoration : 'none'}}>
-                <Button variant='warning'
-                className='d-block w-50 mx-auto mt-2'>Explore More
+                <Button variant='warning' style={{width : '300px'}}
+                className='d-block mx-auto mt-2'>Explore More
                 </Button>
             </Link>
 

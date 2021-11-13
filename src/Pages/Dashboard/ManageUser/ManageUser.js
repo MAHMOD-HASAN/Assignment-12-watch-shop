@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 
 
-
+// Manage User Component
 const ManageUser = () => {
 
     const [alluser, setAlluser] = useState([]);
@@ -28,11 +28,9 @@ const ManageUser = () => {
 
        const wantToDelete = window.confirm('Are You Sure, You Want To Delete');
        if(wantToDelete)  {
-
         fetch(`http://localhost:5000/alluser/${id}`, {
             method : 'DELETE',
         })
-
         .then(res => res.json())
         .then(data => {
             if(data.deletedCount > 0) {
@@ -40,17 +38,14 @@ const ManageUser = () => {
                const restUser = alluser.filter(user => user._id !== id);
                setAlluser(restUser);
             }
-
         })
-
        }
-
     }
 
 
     return (
-        <TableContainer component={Paper}>
 
+        <TableContainer component={Paper}>
          <Typography variant='h5' align='center' color='success.main'>Manage Users</Typography>
 
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

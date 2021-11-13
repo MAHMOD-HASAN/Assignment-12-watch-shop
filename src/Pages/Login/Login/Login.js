@@ -9,7 +9,7 @@ import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstr
 const Login = () => {
 
     // when user login first time 
-    // his or her data will be store this state
+    // data will be store this state
     const [userData, setUserData] = useState({});
 
     const {loginUser, user, loading, error, signInWithGoogle} = useAuth();
@@ -28,21 +28,16 @@ const Login = () => {
     const handleLoginSubmit = e => {
          e.preventDefault();
          loginUser(userData?.email, userData?.password, location, history);
-         console.log(userData);
     }
 
 
     return (
+
         <div>
-
             <Header></Header>
-
           <Container className='my-5'>
-
               <h3 className='text-primary text-center'>Login</h3>
-
               <Row>
-
                  <Col xs='12' md='6' className='mx-auto'>
 
                   {!loading && <Form onSubmit={handleLoginSubmit}>
