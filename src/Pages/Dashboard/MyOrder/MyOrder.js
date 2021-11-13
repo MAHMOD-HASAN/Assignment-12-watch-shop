@@ -19,7 +19,7 @@ const MyOrder = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => setMyorder(data))
-    }, [])
+    }, [user.email])
 
 
     const handleOrderDelete = id => {

@@ -28,7 +28,7 @@ const Reviews = () => {
                             style={{borderRadius : '50%'}}
                             src={review.img} alt="" />
                             <h3>{review.displayName}</h3>
-                            <Rating name="read-only" value={review.star} readOnly />
+                            <Rating name="read-only" value={review?.star} readOnly />
                             <small align='left' className='fw-light'>{review.description}</small>
                          </Col>
                     </div>)

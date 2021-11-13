@@ -25,7 +25,7 @@ const Order = () => {
         .then(data => {
             setProduct(data);
         })
-    }, [])
+    }, [Id])
 
     const defaultOrder = { displayName : user.displayName, email : user.email};
     const [order, setOrder] = useState(defaultOrder);
