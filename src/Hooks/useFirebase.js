@@ -10,8 +10,11 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
+
+
 
     // sign in with google
     const signInWithGoogle = (location, history) => {
@@ -20,6 +23,8 @@ const useFirebase = () => {
          signInWithPopup(auth, googleProvider)
          .then(result => {
             // google sign in succesfull
+            const user = result.user;
+            savedUser(user.email, user.displayName, 'PUT');
             const destination = location?.state?.from || '/';
             history.replace(destination);
             setError('');
@@ -29,6 +34,8 @@ const useFirebase = () => {
          })
          .finally(() => setLoading(false))
     }
+
+
 
     // login with email and password
     const loginUser = (email, password, location, history) => {
@@ -46,12 +53,15 @@ const useFirebase = () => {
           .finally(() => setLoading(false))
     }
 
+
+
     // registration with email & password
     const registerUser = (email, password, name, history) => {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             // successfully registered
+            savedUser(email, name, 'POST');
             const newUser = {email, displayName : name};
             setUser(newUser);
 
@@ -73,14 +83,43 @@ const useFirebase = () => {
           .finally(() => setLoading(false))
     }
 
-    const logOut = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            setError('');
-          }).catch((error) => {
-             setError(error.message);
-          });
+  
+
+    // saved user to database 
+    const savedUser = (email, displayName, method) => {
+         const user = {email, displayName};
+         fetch('http://localhost:5000/user', {
+           method : method,
+           headers : {
+             'content-type' : 'application/json'
+           },
+           body : JSON.stringify(user)
+         })
+         .then(res => res.json())
+         .then(data => {
+           console.log(data)
+         })
     }
+
+    
+    // checking user admin or not
+    useEffect( () => {
+      fetch(`http://localhost:5000/user/${user.email}`)
+      .then(res => res.json())
+      .then(data => setAdmin(data.admin))
+    }, [user.email])
+
+
+
+    // signOut method
+    const logOut = () => {
+      signOut(auth).then(() => {
+          // Sign-out successful.
+          setError('');
+        }).catch((error) => {
+           setError(error.message);
+        });
+  }
 
 
     // user state observer
@@ -101,6 +140,7 @@ const useFirebase = () => {
         user,
         error,
         loading,
+        admin,
         setError,
         signInWithGoogle,
         registerUser,

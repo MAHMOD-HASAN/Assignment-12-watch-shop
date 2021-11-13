@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
 
-    const {user, logOut} = useAuth();
+    const {user, logOut, admin} = useAuth();
 
     const link_Modify = {
         marginRight : '20px',
@@ -29,14 +29,20 @@ const Header = () => {
                 className="justify-content-end">
 
                     <Link style={link_Modify} to="/home">Home</Link>
+
+                    {admin && 
                     <Link style={link_Modify} to="/addproduct">Add Product</Link>
+                    }
                     
                     {
                         user?.email ?
+
                         <>
+                        <Link style={link_Modify} to="/dashboard">Dashboard</Link>
                         <span style={{color:'white'}}>{user.email}</span>
                         <Button onClick={logOut} variant='danger' size='sm'>Logout</Button>
                         </>
+
                           :
 
                         <Link to='/login'>

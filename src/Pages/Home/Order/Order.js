@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
+import Header from '../Shared/Header';
+import Footer from '../Shared/Footer';
+import { Alert } from '@mui/material';
+
+// this is order component
 
 const Order = () => {
 
@@ -10,6 +15,7 @@ const Order = () => {
     const {Id} = useParams();
 
     const [product, setProduct] = useState({});
+    const [success, setSuccess] = useState(false);
 
     // fetch single product with uniqe id
     useEffect( () => {
@@ -37,10 +43,12 @@ const Order = () => {
 
     const allInfo = {
         ...order,
-        ProductName : product.name,
+        productName : product.name,
+        price : product.price,
+        img   : product.img,
     }
-       e.preventDefault();
-       fetch('http://localhost:5000/user', {
+       
+       fetch('http://localhost:5000/order', {
            method : 'POST',
            headers : {
                'content-type' : 'application/json'
@@ -51,14 +59,21 @@ const Order = () => {
        .then(data => {
            if(data.insertedId) {
                alert('order successfull')
+               setSuccess(true);
            }
        })
+       e.preventDefault();
        e.target.reset();
    }
 
 
 
     return (
+        <div>
+
+            <Header></Header>
+
+            
         <Container className='my-5'>
                 <h2 className='text-center text-primary'>Order Please</h2>
             <Row>
@@ -69,16 +84,22 @@ const Order = () => {
 
                             <Form.Control 
                             onBlur={handleOnBlur}
-                            name="productName"
+                            name="img"
                             type="text" 
-                            defaultValue={product.name}/><br/>
+                            defaultValue={product.img}/><br/>
 
                             <Form.Control 
                             onBlur={handleOnBlur}
-                            name="displayName"
+                            name="product"
                             type="text" 
-                            defaultValue={user.displayName}/><br/>
+                            defaultValue={product.name}/><br/>
                             
+                            <Form.Control 
+                            onBlur={handleOnBlur}
+                            name="price"
+                            type="number" 
+                            defaultValue={product.price} /><br/>
+
                             <Form.Control 
                             onBlur={handleOnBlur}
                             name="email"
@@ -87,18 +108,14 @@ const Order = () => {
 
                             <Form.Control 
                             onBlur={handleOnBlur}
-                            name="phone"
-                            type="number" 
-                            placeholder="Phone Number" /><br/>
-
-                            <Form.Control 
-                            onBlur={handleOnBlur}
                             name="date"
                             type="date" 
+                            required
                             placeholder="Date" /><br/>
 
-                            <Button type='submit' className='w-100'>Replace Order</Button>
+                            <Button type='submit' className='w-100 mb-2'>Replace Order</Button>
 
+                            {success && <Alert severity='success'>Your order successfull</Alert>}
                         </Form>
 
                   </Col>
@@ -106,6 +123,12 @@ const Order = () => {
             </Row>
 
         </Container>
+
+        
+
+        <Footer></Footer>
+
+        </div>
     );
 };
 

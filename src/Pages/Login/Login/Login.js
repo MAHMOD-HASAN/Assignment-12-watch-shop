@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import Header from '../../Home/Shared/Header';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 
 const Login = () => {
@@ -29,15 +30,19 @@ const Login = () => {
 
 
     return (
-        <Container className='my-5'>
+        <div>
 
-            <h3 className='text-primary text-center'>Login</h3>
+            <Header></Header>
 
-            <Row>
+          <Container className='my-5'>
 
-                <Col xs='12' md='6' className='mx-auto'>
+              <h3 className='text-primary text-center'>Login</h3>
 
-                {!loading && <Form onSubmit={handleLoginSubmit}>
+              <Row>
+
+                 <Col xs='12' md='6' className='mx-auto'>
+
+                  {!loading && <Form onSubmit={handleLoginSubmit}>
 
                     <Form.Group className="mb-3" controlId="formGroupPassword">
                     <Form.Label>Email address</Form.Label>
@@ -75,7 +80,7 @@ const Login = () => {
 
                     <Button onClick={() => signInWithGoogle(location, history)} className='w-100' variant='danger'>Google Sign In</Button>
 
-                 </Form>}
+                   </Form>}
                   
                    
 
@@ -83,9 +88,12 @@ const Login = () => {
                     
                     {error && <Alert>{error}</Alert>}
                 </Col>
+
             </Row>
+
         </Container>
-       
+
+        </div>
     );
 };
 

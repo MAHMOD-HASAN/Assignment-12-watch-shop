@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './Contexts/AuthProvider';
 import AddProducts from './Pages/AddProducts/AddProducts';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Explore from './Pages/Home/Explore/Explore';
 import Home from './Pages/Home/Home/Home';
 import Order from './Pages/Home/Order/Order';
@@ -15,35 +16,50 @@ import NotFound from './Pages/NotFound/NotFound';
 function App() {
   return (
     <AuthProvider>
+
        <Router>
-      <Switch>
-        <Route exact path='/'>
-           <Home></Home>
-        </Route>
-        <Route exact path='/home'>
-           <Home></Home>
-        </Route>
-        <Route exact path='/addproduct'>
-           <AddProducts></AddProducts>
-        </Route>
-        <Route exact path='/explore'>
-           <Explore></Explore>
-        </Route>
-        <Route exact path='/login'>
-           <Login></Login>
-        </Route>
-        <Route exact path='/register'>
-           <Register></Register>
-        </Route>
-        <PrivateRoute exact path='/orders/:Id'>
-           <Order></Order>
-        </PrivateRoute>
-        <Route path='*'>
-           <NotFound></NotFound>
-        </Route>
-      </Switch>
+
+            <Switch>
+                  <Route exact path='/'>
+                     <Home></Home>
+                  </Route>
+                  
+                  <Route path='/home'>
+                     <Home></Home>
+                  </Route>
+
+                  <Route path='/addproduct'>
+                     <AddProducts></AddProducts>
+                  </Route>
+
+                  <Route path='/explore'>
+                     <Explore></Explore>
+                  </Route>
+
+                  <Route path='/login'>
+                     <Login></Login>
+                  </Route>
+
+                  <Route path='/register'>
+                     <Register></Register>
+                  </Route>
+
+                  <PrivateRoute path='/orders/:Id'>
+                     <Order></Order>
+                  </PrivateRoute>
+
+                  <PrivateRoute path='/dashboard'>
+                     <Dashboard></Dashboard>
+                  </PrivateRoute>
+
+                  <Route path='*'>
+                     <NotFound></NotFound>
+                  </Route>
+
+            </Switch>
       
-    </Router>
+         </Router>
+
     </AuthProvider>
   );
 }

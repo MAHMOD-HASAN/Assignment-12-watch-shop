@@ -54,31 +54,36 @@ const AddProducts = () => {
                                 <Form.Control 
                                 onBlur={handleOnBlur}
                                 name="name"
-                                type="text" 
+                                type="text"
+                                required 
                                 placeholder="Watch Name" /><br/>
                                 
                                 <Form.Control 
                                 onBlur={handleOnBlur}
                                 name="price"
-                                type="number" 
+                                type="number"
+                                required 
                                 placeholder="Watch Price" /><br/>
 
                                 <Form.Control 
                                 onBlur={handleOnBlur}
                                 name="stock"
-                                type="number" 
+                                type="number"
+                                required 
                                 placeholder="Stock" /><br/>
 
                                 <Form.Control 
                                 onBlur={handleOnBlur}
                                 name="img"
-                                type="text" 
+                                type="text"
+                                required 
                                 placeholder="img-url" /><br/>
 
                                 <Form.Control 
                                 onBlur={handleOnBlur}
                                 name="description"
                                 as='textarea'
+                                required
                                 placeholder="description" /><br/>
                                 
                                 <Button type='submit' className='w-100'>Submit</Button>
