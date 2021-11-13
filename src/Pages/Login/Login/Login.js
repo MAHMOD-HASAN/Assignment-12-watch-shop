@@ -4,7 +4,10 @@ import Header from '../../Home/Shared/Header';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 
+
+// Login component
 const Login = () => {
+
     // when user login first time 
     // his or her data will be store this state
     const [userData, setUserData] = useState({});
@@ -78,7 +81,7 @@ const Login = () => {
                     <br/><br/>
 
 
-                    <Button onClick={() => signInWithGoogle(location, history)} className='w-100' variant='danger'>Google Sign In</Button>
+                    <Button onClick={() => signInWithGoogle(location, history)} className='w-100 mb-3' variant='danger'>Google Sign In</Button>
 
                    </Form>}
                   

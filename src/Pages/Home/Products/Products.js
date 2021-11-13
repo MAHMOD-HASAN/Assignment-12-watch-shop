@@ -15,6 +15,7 @@ const Products = () => {
 
     return (
         <Container className='my-5'>
+            <h2 className='text-primary text-center'>Our Products</h2>
             <Row xs='1' md='3' className='g-3'>
 
                 {
