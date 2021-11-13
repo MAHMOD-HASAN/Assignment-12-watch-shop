@@ -15,7 +15,7 @@ const MyOrder = () => {
     const [myorder, setMyorder] = useState([]);
 
     useEffect( () => {
-        const url = `http://localhost:5000/order?email=${user.email}`;
+        const url = `https://safe-crag-74905.herokuapp.com/order?email=${user.email}`;
         fetch(url)
         .then(res => res.json())
         .then(data => setMyorder(data))
@@ -28,7 +28,7 @@ const MyOrder = () => {
 
       if(sureDelete) {
 
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://safe-crag-74905.herokuapp.com/order/${id}`, {
         method : 'DELETE',
       })
 

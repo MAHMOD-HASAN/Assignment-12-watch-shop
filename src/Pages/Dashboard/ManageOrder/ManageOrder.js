@@ -18,7 +18,7 @@ const ManageOrder = () => {
 
     useEffect( () => {
   
-        fetch('http://localhost:5000/order/all')
+        fetch('https://safe-crag-74905.herokuapp.com/order/all')
         .then(res => res.json())
         .then(data => setAllorder(data))
     }, [])
@@ -30,7 +30,7 @@ const ManageOrder = () => {
 
        if(wantToDelete) {
 
-        const url = `http://localhost:5000/order/all/${id}`;
+        const url = `https://safe-crag-74905.herokuapp.com/order/all/${id}`;
 
         fetch(url, {
           method : 'DELETE',

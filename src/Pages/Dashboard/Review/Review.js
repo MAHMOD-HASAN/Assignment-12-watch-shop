@@ -19,7 +19,7 @@ const Review = () => {
 
     const handleOrderSubmit = e => {
 
-           fetch('http://localhost:5000/review', {
+           fetch('https://safe-crag-74905.herokuapp.com/review', {
                method : 'POST',
                headers : {
                    'content-type' : 'application/json'
@@ -41,7 +41,7 @@ const Review = () => {
 
         <Container className='my-5'>
 
-            <h2 className='text-center text-primary'>Order Please</h2>
+            <h2 className='text-center text-primary'>Give Feedback</h2>
 
             <Row>
 

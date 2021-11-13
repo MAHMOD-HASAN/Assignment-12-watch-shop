@@ -16,7 +16,7 @@ const ManageUser = () => {
     const [alluser, setAlluser] = useState([]);
 
     useEffect( () => {
-        fetch('http://localhost:5000/alluser')
+        fetch('https://safe-crag-74905.herokuapp.com/alluser')
         .then(res => res.json())
         .then(data => {
             const exceptAdmin = data.filter(user => user._id !== user.role);
@@ -28,7 +28,7 @@ const ManageUser = () => {
 
        const wantToDelete = window.confirm('Are You Sure, You Want To Delete');
        if(wantToDelete)  {
-        fetch(`http://localhost:5000/alluser/${id}`, {
+        fetch(`https://safe-crag-74905.herokuapp.com/alluser/${id}`, {
             method : 'DELETE',
         })
         .then(res => res.json())

@@ -6,7 +6,7 @@ const Reviews = () => {
     
     const [reviews, setReviews] = useState([]);
     useEffect( () => {
-        fetch('http://localhost:5000/review')
+        fetch('https://safe-crag-74905.herokuapp.com/review')
         .then(res => res.json())
         .then(data => {
             setReviews(data);
@@ -21,7 +21,7 @@ const Reviews = () => {
             <Row xs={1} md={2} lg={3}>
                 {
                     reviews.map(review => <div key={review.img}>
-                         <Col className='border border p-3 bg-dark'>
+                         <Col className='border border p-3 bg-dark mb-2'>
                             <img 
                             width = '150px'
                             height = '150px'

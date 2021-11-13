@@ -18,7 +18,7 @@ const AddProducts = () => {
     const handleAddProduct = e => {
 
         e.preventDefault();
-        fetch('http://localhost:5000/product', {
+        fetch('https://safe-crag-74905.herokuapp.com/product', {
              method : 'POST',
              headers : {
                  'content-type' : 'application/json'

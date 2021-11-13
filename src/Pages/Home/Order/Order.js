@@ -19,7 +19,7 @@ const Order = () => {
 
     // fetch single product with uniqe id
     useEffect( () => {
-        const url = `http://localhost:5000/product/${Id}`;
+        const url = `https://safe-crag-74905.herokuapp.com/product/${Id}`;
         fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -48,7 +48,7 @@ const Order = () => {
         img   : product.img,
     }
        
-       fetch('http://localhost:5000/order', {
+       fetch('https://safe-crag-74905.herokuapp.com/order', {
            method : 'POST',
            headers : {
                'content-type' : 'application/json'
