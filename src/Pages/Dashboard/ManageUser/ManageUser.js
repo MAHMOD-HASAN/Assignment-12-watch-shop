@@ -54,6 +54,7 @@ const ManageUser = () => {
 
               <TableCell>User Name</TableCell>
               <TableCell>User Email</TableCell>
+              <TableCell>Rank</TableCell>
               <TableCell>Action</TableCell>
               
             </TableRow>
@@ -64,14 +65,15 @@ const ManageUser = () => {
                 key={user.email}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                
 
                 <TableCell align="left">{user.displayName}</TableCell>
                 <TableCell align="left">{user.email}</TableCell>
                 <TableCell align="left">
+                 <Button variant="outlined" color="success">{user?.role || 'user'}</Button>
+               </TableCell>
+                <TableCell align="left">
                  <Button onClick= { () => handleUserDelete(user._id) } variant="outlined" color="error">Delete</Button>
                </TableCell>
-
 
               </TableRow>
             ))}
