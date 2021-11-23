@@ -54,65 +54,66 @@ const ManageOrder = () => {
 
         <TableContainer component={Paper}>
 
-          <Typography variant='h5' align='center' color='success.main'>Manage Orders</Typography>
+        <Typography variant='h5' align='center' color='success.main'>Manage Orders</Typography>
 
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
 
-             <TableHead>
+              <TableHead>
 
-                 <TableRow>
+              <TableRow>
 
-                        <TableCell>User Email</TableCell>
+              <TableCell>User Email</TableCell>
 
-                        <TableCell>Product</TableCell>
+              <TableCell>Product</TableCell>
 
-                        <TableCell>Name</TableCell>
+              <TableCell>Name</TableCell>
 
-                        <TableCell>Price</TableCell>
+              <TableCell>Price</TableCell>
 
-                        <TableCell>Date</TableCell>
+              <TableCell>Date</TableCell>
 
-                        <TableCell>Action</TableCell>
-
-                 </TableRow>
-
-            </TableHead>
-
-              <TableBody>
-                {allorder.map((order) => (
-                  <TableRow
-                    key={ order._id }
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                
-
-                        <TableCell align="left">{order.email}</TableCell>
-
-                        <TableCell align="left">
-                        <img 
-                        src={order.img} 
-                        alt=''
-                        width = '100px'
-                        /></TableCell>
-
-                        <TableCell align="left">{order.productName}</TableCell>
-
-                        <TableCell align="left">$ {order.price}</TableCell>
-
-                        <TableCell align="left">{order.date}</TableCell>
-
-                        <TableCell align="left">
-                        <Button onClick={() => handleOrderDelete(order._id)} variant="outlined" color="error">Delete</Button>
-                      </TableCell>
+              <TableCell>Action</TableCell>
 
               </TableRow>
 
-            ))}
-          </TableBody>
+              </TableHead>
 
-        </Table>
+              <TableBody>
+              {allorder.map((order) => (
+              <TableRow
+              key={ order._id }
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
 
-      </TableContainer>
+
+              <TableCell align="left">{order.email}</TableCell>
+
+              <TableCell align="left">
+              <img 
+              src={order.img} 
+              alt=''
+              width = '100px'
+              /></TableCell>
+
+              <TableCell align="left">{order.productName}</TableCell>
+
+              <TableCell align="left">$ {order.price}</TableCell>
+
+              <TableCell align="left">{order.date}</TableCell>
+
+              <TableCell align="left">
+              <Button onClick={() => handleOrderDelete(order._id)} variant="outlined" color="error">Delete</Button>
+              </TableCell>
+
+              </TableRow>
+              ))}
+              </TableBody>
+
+              </Table>
+
+        </TableContainer>
+           
+         
     );
 };
 

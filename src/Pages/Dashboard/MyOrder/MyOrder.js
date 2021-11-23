@@ -8,11 +8,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const MyOrder = () => {
 
     const {user} = useAuth();
     const [myorder, setMyorder] = useState([]);
+    const [payment, setPayment] = useState(false);
 
     useEffect( () => {
         const url = `https://safe-crag-74905.herokuapp.com/order?email=${user.email}`;
@@ -70,7 +72,7 @@ const MyOrder = () => {
 
             {myorder.map((order) => (
               <TableRow
-                key={order.name}
+                key={order._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 
@@ -88,7 +90,13 @@ const MyOrder = () => {
                 <TableCell align="left">{order.date}</TableCell>
 
                 <TableCell align="left">
+                 {!payment ? 
+                 <Link to={`/dashboard/payment/${order._id}`}>
+                 <Button  variant='outlined' color="success">Pay</Button> 
+                 </Link>
+                 :
                  <Button onClick={() => handleOrderDelete(order._id)} variant="outlined" color="error">Delete</Button>
+                }
                </TableCell>
 
                 

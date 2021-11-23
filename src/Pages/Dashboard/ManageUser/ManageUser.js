@@ -19,8 +19,7 @@ const ManageUser = () => {
         fetch('https://safe-crag-74905.herokuapp.com/alluser')
         .then(res => res.json())
         .then(data => {
-            const exceptAdmin = data.filter(user => user._id !== user.role);
-            setAlluser(exceptAdmin);
+          setAlluser(data);
         })
     }, [])
 
@@ -60,7 +59,9 @@ const ManageUser = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            { alluser.map((user) => (
+            { 
+            
+            alluser.map(user =>  (
               <TableRow
                 key={user.email}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -76,6 +77,7 @@ const ManageUser = () => {
                </TableCell>
 
               </TableRow>
+
             ))}
           </TableBody>
         </Table>
